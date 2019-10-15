@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  android:orientation="vertical" android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:gravity="center"
+                  android:id="@+id/ll_unbind_pharmacy">
+        <ImageView
+                android:id="@+id/iv_no_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/icon_unbind_pharmacy"
+                android:layout_gravity="center"/>
+        <TextView
+                android:id="@+id/tv_tips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/unbind_pharmacy"
+                android:gravity="center"
+                android:padding="@dimen/dimen_16dp"/>
+
+        <TextView
+                android:id="@+id/tv_bind_pharmacy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/binding_pharmacy"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="@color/bottom_tab_text_color"
+                android:background="@drawable/bg_bind_shape"/>
+    </LinearLayout>
+</layout>

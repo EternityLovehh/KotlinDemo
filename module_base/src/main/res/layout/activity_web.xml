@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable name="viewmodel" type="com.meditrust.module_base.base.BaseViewModel"/>
+    </data>
+
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".ui.WebActivity">
+        <include layout="@layout/layout_toolbar"/>
+
+        <com.meditrust.module_base.view.X5WebView
+                android:id="@+id/web_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+        </com.meditrust.module_base.view.X5WebView>
+
+    </LinearLayout>
+</layout>

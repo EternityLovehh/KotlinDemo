@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+
+    <color name="text_gray">#8C8D8E</color>
+    <color name="bottom_tab_text_color">#0074E4</color>
+    <color name="btn_unable_blue_color">#660074E4</color>
+    <color name="divider_gray">#fff4f4f4</color>
+    <color name="bg_dialog">#d1f8f8f8</color>
+    <color name="divider_item_color">#F4F4F4</color>
+    <color name="edit_mask_color">#FFF3F3F3</color>
+    <color name="mask_color">#88888888</color>
+
+    <color name="dark_gray">#333333</color>
+    <color name="middle_gray">#666666</color>
+    <color name="light_gray">#999999</color>
+    <color name="flow_layout_gray">#F2F2F2</color>
+    <color name="flow_tab_selected">#A9C4DF</color>
+    <color name="divider_line_color">#DDDDDD</color>
+    <color name="alter_drug_color">#CCCCCC</color>
+    <color name="transpant_white_color">#dddddddd</color>
+    <color name="recruite_tab_color">#EEEEEE</color>
+    <color name="error_color">#FFE00A0A</color>
+    <color name="msg_hint_color">#FFFF3B30</color>
+    <color name="edit_remark_color">#FFF8F8F8</color>
+
+
+    <color name="start_blue_color">#990074E4</color>
+    <color name="end_blue_color">#FF0074E4</color>
+    <color name="my_start_color">#AA0074E4</color>
+    <color name="invoice_color">#F5A100</color>
+
+</resources>

@@ -1,0 +1,62 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <!--透明主题，解决黑屏问题-->
+    <style name="AppStartLoadTranslucent" parent="AppTheme">  
+        <item name="android:windowNoTitle">true</item>  
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
+
+    <!--dialog样式-->
+    <style name="CustomDialog" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.2</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <!--<item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item> &lt;!&ndash;Activity切换动画效果&ndash;&gt;-->
+    </style>
+
+    <style name="ProgressDialog" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/dark_gray</item>
+        <item name="colorPrimaryDark">@color/dark_gray</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+
+    <style name="AppBarTheme" parent="AppTheme">
+        <item name="colorPrimary">@android:color/transparent</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="StyleNetChangedDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/divider_line_color</item>
+        <item name="colorControlActivated">@color/bottom_tab_text_color</item>
+    </style>
+
+
+</resources>

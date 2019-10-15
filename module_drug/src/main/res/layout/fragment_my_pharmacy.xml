@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="viewmodel" type="com.meditrust.module_drug.viewmodel.MyPharmacyViewModel"/>
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:descendantFocusability="blocksDescendants">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="@dimen/dimen_16dp"
+                    android:layout_marginRight="@dimen/dimen_16dp"
+                    android:layout_marginTop="@dimen/dimen_16dp">
+
+                <LinearLayout
+                        android:id="@+id/ll_all_order"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/icon_all_order"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/all_order"
+                            android:gravity="center"
+                            android:padding="@dimen/dimen_6dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/ll_pharmacy_warehouse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/icon_pharmacy_house"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="已上架药品"
+                            android:gravity="center"
+                            android:padding="@dimen/dimen_6dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/ll_order_receipt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/icon_order_receipt"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/order_receipt"
+                            android:gravity="center"
+                            android:padding="@dimen/dimen_6dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/ll_sweep_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/icon_sweep_code"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sweep_code"
+                            android:gravity="center"
+                            android:padding="@dimen/dimen_6dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <include layout="@layout/divider_item"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_16dp">
+                <View
+                        android:layout_width="@dimen/dimen_2dp"
+                        android:layout_height="@dimen/dimen_16dp"
+                        android:background="@color/bottom_tab_text_color"
+                        android:layout_gravity="center"/>
+                <TextView
+                        android:id="@+id/tv_audit_order"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/audit_order"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/font_18sp"
+                        android:layout_marginLeft="@dimen/dimen_8dp"/>
+            </LinearLayout>
+
+            <include layout="@layout/divider_line"/>
+
+            <FrameLayout android:layout_width="match_parent"
+                         android:layout_height="match_parent">
+
+                <include
+                        android:id="@+id/include"
+                        layout="@layout/layout_unbind_pharmacy"/>
+
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                        android:id="@+id/srl_no_audit_order"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <com.meditrust.module_base.view.EmptyView
+                            android:id="@+id/empty_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rl_audit_order"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                        </androidx.recyclerview.widget.RecyclerView>
+                    </com.meditrust.module_base.view.EmptyView>
+
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

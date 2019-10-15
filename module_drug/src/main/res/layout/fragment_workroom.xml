@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="viewmodel" type="com.meditrust.module_drug.viewmodel.WorkRoomViewModel"/>
+    </data>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dimen_16dp">
+            <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tl_work"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_gravity="bottom"
+                    app:tabIndicatorColor="@color/bottom_tab_text_color"
+                    android:minHeight="?attr/actionBarSize"
+                    app:tabSelectedTextColor="@color/bottom_tab_text_color"
+                    app:tabTextColor="@color/text_gray"
+                    app:tabGravity="fill"
+                    app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                    app:tabMode="fixed"
+                    app:tabPaddingTop="@dimen/dimen_4dp"
+                    android:layout_toLeftOf="@+id/iv_qrcode">
+            </com.google.android.material.tabs.TabLayout>
+
+            <ImageView
+                    android:id="@+id/iv_qrcode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/icon_qrcode"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/dimen_20dp"
+                    android:layout_centerVertical="true"
+                    tools:ignore="VectorDrawableCompat"/>
+
+        </RelativeLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vp_work_room"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/app_name"/>
+    </LinearLayout>
+
+</layout>

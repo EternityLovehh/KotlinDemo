@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="price_list">
+        <item>不限</item>
+        <item>0 - 500(含500元)</item>
+        <item>500 - 1000(含1000元)</item>
+        <item>1000 - 1500(含1500元)</item>
+        <item>1500 - 2000(含2000元)</item>
+        <item>>2000元</item>
+    </string-array>
+
+    <string-array name="drug_tabs">
+        <item>药品种类</item>
+        <item>价格</item>
+    </string-array>
+
+    <string-array name="pharmacy_tabs">
+        <item>药房品牌</item>
+        <item>位置</item>
+    </string-array>
+
+    <string-array name="order_tab_list">
+        <item>全部</item>
+        <item>待审核</item>
+        <item>待发货</item>
+        <item>已发货</item>
+        <item>已完成</item>
+    </string-array>
+
+    <string-array name="send_modes">
+        <item>物流配送</item>
+        <item>药店配送</item>
+    </string-array>
+
+    <string-array name="express_delivers">
+        <item>中通快递</item>
+        <item>圆通快递</item>
+        <item>申通快递</item>
+        <item>顺丰快递</item>
+        <item>韵达快递</item>
+        <item>EMS</item>
+    </string-array>
+
+    <string-array name="tab_items">
+        <item>我的药房</item>
+        <item>患者招募</item>
+        <item>我的消息</item>
+    </string-array>
+
+
+</resources>

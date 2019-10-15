@@ -2,11 +2,9 @@ package com.meditrust.module_drug.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import androidx.paging.PageKeyedDataSource
-import com.meditrust.module_base.adapter.BaseItem
 import com.meditrust.module_base.base.BaseViewModel
+import com.meditrust.module_base.basebinding.BindingMultiEntity
 import com.meditrust.module_base.constant.Const
-import com.meditrust.module_base.datasource.PagedDataLoader
 import com.meditrust.module_base.extensions.io_main
 import com.meditrust.module_base.extensions.subscribeBy
 import com.meditrust.module_base.utils.ToastUtils
@@ -23,14 +21,21 @@ import org.json.JSONObject
  * @date: 2019/9/18
  * @desc:
  */
-class MyPharmacyViewModel(application: Application) : BaseViewModel(application), PagedDataLoader<BaseItem> {
+class MyPharmacyViewModel(application: Application) : BaseViewModel(application) {
 
-    var sourceData: MutableLiveData<ArrayList<BaseItem>>? = null
+    val pageStatus: MutableLiveData<String>? = null
 
-    override fun loadInitial(
-        params: PageKeyedDataSource.LoadInitialParams<Int>,
-        callback: PageKeyedDataSource.LoadInitialCallback<Int, BaseItem>
-    ) {
+    fun getPMInfo() {
+        ApiService.getPMInfo()
+            .io_main()
+            .subscribeBy({
+                pageStatus?.postValue(it?.userStatus)
+            }, {
+                ToastUtils.showToast(it)
+            }).add()
+    }
+
+    fun queryOrderList(pageNum: Int) {
         val jsonObject = JSONObject()
         try {
             jsonObject.put("orderNo", null)
@@ -48,7 +53,7 @@ class MyPharmacyViewModel(application: Application) : BaseViewModel(application)
             .io_main()
             .subscribe({
                 val resultsBeanList = it.result.results
-                val multiList = ArrayList<BaseItem>()
+                val multiList = ArrayList<BindingMultiEntity>()
                 val totalPage = it.result.totalPage
                 resultsBeanList?.forEach { it1 ->
                     multiList.add(it1)
@@ -59,46 +64,13 @@ class MyPharmacyViewModel(application: Application) : BaseViewModel(application)
                     orderFootModel.resultsBean = it1
                     orderFootModel.homedeliveryOrderDetailResp = it1.homedeliveryOrderDetailResp
                     multiList.add(orderFootModel)
-                    callback.onResult(multiList, null, null)
-                    sourceData?.postValue(multiList)
+
                 }
             }, {
                 ToastUtils.showToast(it.message!!)
             })
             .add()
-    }
-
-    override fun loadAfter(
-        params: PageKeyedDataSource.LoadParams<Int>,
-        callback: PageKeyedDataSource.LoadCallback<Int, BaseItem>
-    ) {
 
     }
-
-    override fun refresh() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun loadMore() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    val pageStatus: MutableLiveData<String>? = null
-
-    fun getPMInfo() {
-        ApiService.getPMInfo()
-            .io_main()
-            .subscribeBy({
-                pageStatus?.postValue(it?.userStatus)
-            }, {
-                ToastUtils.showToast(it)
-            }).add()
-    }
-
-    fun queryOrderList(pageNum: Int) {
-
-
-    }
-
 
 }

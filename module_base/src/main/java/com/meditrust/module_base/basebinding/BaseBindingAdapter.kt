@@ -7,14 +7,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-
 /**
  * @author: create by zhongchao.wang
  * @date: 2019/9/18
  * @desc: base databinding adapter
  */
-open class BaseBindingAdapter<T, B : ViewDataBinding>() : RecyclerView.Adapter<BindingHolder<B>>() {
-
+open class BaseBindingAdapter<T>() : RecyclerView.Adapter<BindingHolder>() {
     private lateinit var mInflater: LayoutInflater
     private var mLayoutId: Int = 0
     private var mVariableId: Int = 0
@@ -31,15 +29,14 @@ open class BaseBindingAdapter<T, B : ViewDataBinding>() : RecyclerView.Adapter<B
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder<B> {
-        val binding: B = DataBindingUtil.inflate(mInflater, mLayoutId, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder {
+        val binding: ViewDataBinding = DataBindingUtil.inflate(mInflater, mLayoutId, parent, false)
         return BindingHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: BindingHolder<B>, position: Int) {
+    override fun onBindViewHolder(holder: BindingHolder, position: Int) {
         holder.getBinding().setVariable(mVariableId, mDatas?.get(position))
         holder.getBinding().executePendingBindings()
-
     }
 
     override fun getItemCount(): Int {

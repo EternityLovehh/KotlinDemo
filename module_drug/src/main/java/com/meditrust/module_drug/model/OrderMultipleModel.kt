@@ -1,7 +1,8 @@
 package com.meditrust.module_drug.model
 
 import com.google.gson.annotations.SerializedName
-import com.meditrust.module_base.adapter.BaseItem
+import com.meditrust.module_base.basebinding.BindingMultiEntity
+import com.meditrust.module_drug.R
 
 import java.io.Serializable
 
@@ -144,7 +145,11 @@ data class ResultsBean(
     var pbmUser: PbmUserBean? = null,
     val mType: Int = 0
 
-) : BaseItem(), Serializable
+) : BindingMultiEntity, Serializable {
+    override fun getItemType(): Int {
+        return R.layout.item_order_header
+    }
+}
 
 
 data class PbmUserBean(
@@ -260,8 +265,11 @@ data class HomedeliveryOrderDetailRespBean(
     var userId: String? = null,
     var imageUrls: List<*>? = null,
     private val mType: Int = 0
-) : BaseItem(), Serializable
-
+) : BindingMultiEntity, Serializable {
+    override fun getItemType(): Int {
+        return R.layout.item_order_content
+    }
+}
 
 data class OrderFootModel(
     val mType: Int = 0,
@@ -269,4 +277,8 @@ data class OrderFootModel(
     var status: String? = null,
     var homedeliveryOrderDetailResp: List<HomedeliveryOrderDetailRespBean>? = null,
     var resultsBean: ResultsBean? = null
-) : BaseItem(), Serializable
+) : BindingMultiEntity, Serializable {
+    override fun getItemType(): Int {
+        return R.layout.item_order_footer
+    }
+}

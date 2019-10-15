@@ -6,7 +6,5 @@ package com.meditrust.module_base.basebinding
  * @desc: 多类型item列表接口
  */
 interface BindingMultiEntity {
-
-    fun getViewType(): Int
-
+    fun getItemType(): Int
 }

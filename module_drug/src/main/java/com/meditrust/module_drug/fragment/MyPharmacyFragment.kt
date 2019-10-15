@@ -4,9 +4,9 @@ import android.view.View
 import androidx.lifecycle.Observer
 import com.meditrust.module_base.BR
 import com.meditrust.module_base.base.BaseFragment
+import com.meditrust.module_base.basebinding.BaseMultiItemAdapter
 import com.meditrust.module_base.constant.Const
 import com.meditrust.module_drug.R
-import com.meditrust.module_drug.adapter.OrderAdapter
 import com.meditrust.module_drug.databinding.FragmentMyPharmacyBinding
 import com.meditrust.module_drug.viewmodel.MyPharmacyViewModel
 import kotlinx.android.synthetic.main.layout_unbind_pharmacy.*
@@ -18,13 +18,15 @@ import kotlinx.android.synthetic.main.layout_unbind_pharmacy.*
  */
 class MyPharmacyFragment : BaseFragment<FragmentMyPharmacyBinding, MyPharmacyViewModel>() {
 
-    var mOrderAdapter: OrderAdapter? = null
+    var mOrderAdapter: BaseMultiItemAdapter? = null
 
     override fun initView(): Int {
         return R.layout.fragment_my_pharmacy
     }
 
     override fun initData() {
+        mOrderAdapter = BaseMultiItemAdapter()
+
         mViewModel.getPMInfo()
 
         mViewModel.pageStatus?.observe(this, Observer {
@@ -36,9 +38,7 @@ class MyPharmacyFragment : BaseFragment<FragmentMyPharmacyBinding, MyPharmacyVie
                 }
                 Const.HAVE_BIND_PM -> {
                     mBinding.include.visibility = View.GONE
-                    mViewModel.sourceData?.observe(this, Observer {
-                        mOrderAdapter.submitList(it)
-                    })
+
                 }
                 Const.UN_AUDIT_PM -> {
                     mBinding.include.visibility = View.VISIBLE

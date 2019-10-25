@@ -4,7 +4,10 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="viewmodel" type="com.meditrust.module_drug.viewmodel.WorkRoomViewModel"/>
+
+        <variable
+                name="viewmodel"
+                type="com.meditrust.module_drug.workroom.WorkRoomViewModel" />
     </data>
 
     <LinearLayout android:layout_width="match_parent"

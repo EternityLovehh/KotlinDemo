@@ -3,14 +3,13 @@ package com.meditrust.kotlindemo
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.meditrust.kotlindemo.databinding.ActivityMainBinding
+import com.meditrust.module_base.adapter.CommonPageAdapter
 import com.meditrust.module_base.base.BaseActivity
-import com.meditrust.module_drug.fragment.WelfareFragment
-import com.meditrust.module_drug.fragment.WorkRoomFragment
+import com.meditrust.module_drug.welfare.WelfareFragment
+import com.meditrust.module_drug.workroom.WorkRoomFragment
 import com.meditrust.moudle_user.fragment.PersonFragment
 import com.meditrust.moudle_user.fragment.WithDrawalFragment
 
@@ -19,7 +18,7 @@ import com.meditrust.moudle_user.fragment.WithDrawalFragment
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private lateinit var mFragmentList: List<Fragment>
-    private lateinit var mAdapter: NormalAdapter
+    private lateinit var mAdapter: CommonPageAdapter
     private var mToolbar: Toolbar? = null
     private var mTitle: TextView? = null
 
@@ -38,7 +37,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         mTitle?.text = "首页"
         mBinding.navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         mFragmentList = listOf(WorkRoomFragment(), WelfareFragment(), WithDrawalFragment(), PersonFragment())
-        mAdapter = NormalAdapter(this.supportFragmentManager, mFragmentList)
+        mAdapter = CommonPageAdapter(this.supportFragmentManager, mFragmentList, null)
         mBinding.vpMain?.apply {
             this.adapter = mAdapter
         }
@@ -74,16 +73,4 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         false
     }
 
-    internal inner class NormalAdapter(fm: FragmentManager, private val fragmentList: List<Fragment>) :
-        FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-
-        override fun getItem(position: Int): Fragment {
-            return fragmentList[position]
-        }
-
-        override fun getCount(): Int {
-            return fragmentList.size
-        }
-
-    }
 }

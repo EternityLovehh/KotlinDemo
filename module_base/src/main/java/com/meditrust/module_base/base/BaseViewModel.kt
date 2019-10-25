@@ -39,6 +39,10 @@ open class BaseViewModel : AndroidViewModel, LifecycleObserver {
         isNoData.value = false
     }
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    open fun onResume() {
+    }
+
     override fun onCleared() {
         super.onCleared()
         if (!compositeDisposable.isDisposed) {

@@ -35,8 +35,8 @@ ext {
             "room-runtime"      : "android.arch.persistence.room:runtime:+",
             "room-rxjava2"      : "android.arch.persistence.room:rxjava2:+",
 
-//            "paging"            : "android.arch.paging:runtime:+",
-//            "paging-rxjava2"    : "android.arch.paging:rxjava2:1.0.0-rc1",
+            "paging"            : "android.arch.paging:runtime:+",
+            "paging-rxjava2"    : "android.arch.paging:rxjava2:1.0.0-rc1",
             "lifecycle"         : "android.arch.lifecycle:extensions:+",
             "livedata"          : "android.arch.lifecycle:livedata:+",
             "anko-commons"      : "org.jetbrains.anko:anko-commons:+",
@@ -45,11 +45,12 @@ ext {
             "anko-appcompat-v7" : "org.jetbrains.anko:anko-appcompat-v7:+",
 
             "dagger"            : "com.google.dagger:dagger:+",
+            "dagger-android"    : 'com.google.dagger:dagger-android-support:+',
 
+            "livedatabus"       : "com.jeremyliao:live-event-bus-x:1.5.5",
             "pagerlayoutmanager": 'com.gcssloop.recyclerview:pagerlayoutmanager:2.3.8',
             "rxpermissions"     : 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar',
             "viewpager2"        : 'androidx.viewpager2:viewpager2:+',
-            "refresh"           : 'com.scwang.smartrefresh:SmartRefreshLayout:+',
             "autosize"          : 'me.jessyan:autosize:+'
     ]
 

@@ -162,4 +162,7 @@ object Const {
 
     val MAN = "m"
     val WOMEN = "f"
+
+    //刷新列表
+    var refresh = 0
 }

@@ -47,7 +47,6 @@ abstract class BaseListViewModel<T>(application: Application) : BaseViewModel(ap
         params: PageKeyedDataSource.LoadInitialParams<Int>,
         callback: PageKeyedDataSource.LoadInitialCallback<Int, T>
     ) {
-        refresh()
         data.clear()
         loadData(1) {
             when {

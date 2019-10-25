@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+                name="viewmodel"
+                type="com.meditrust.module_drug.upload.UploadIdCardViewModel" />
+    </data>
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_16dp"
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:layout_marginRight="@dimen/dimen_16dp"
+                    android:layout_marginBottom="@dimen/dimen_8dp">
+
+                <View
+                        android:layout_width="@dimen/dimen_2dp"
+                        android:layout_height="@dimen/dimen_16dp"
+                        android:layout_gravity="center"
+                        android:background="@color/bottom_tab_text_color" />
+
+                <TextView
+                        android:id="@+id/tv_upload_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimen_8dp"
+                        android:paddingTop="@dimen/dimen_8dp"
+                        android:paddingBottom="@dimen/dimen_8dp"
+                        android:text="上传本人手持身份证正面和白纸签字照片"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/font_14sp"
+                        android:textStyle="bold" />
+
+                <TextView
+                        android:id="@+id/tv_upload_tips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dimen_8dp"
+                        android:paddingBottom="@dimen/dimen_8dp"
+                        android:text="（请上传清晰有效的药品发票）"
+                        android:textColor="@color/middle_gray"
+                        android:textSize="@dimen/font_12sp" />
+            </LinearLayout>
+
+            <include layout="@layout/divider_line" />
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_16dp"
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:layout_marginRight="@dimen/dimen_16dp"
+                    android:layout_marginBottom="@dimen/dimen_16dp">
+
+                <FrameLayout
+                        android:layout_width="@dimen/dimen_64dp"
+                        android:layout_height="@dimen/dimen_64dp">
+
+                    <ImageView
+                            android:id="@+id/iv_upload_image"
+                            android:layout_width="@dimen/dimen_64dp"
+                            android:layout_height="@dimen/dimen_64dp"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@mipmap/icon_add_img" />
+
+                    <ImageView
+                            android:id="@+id/iv_delete_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|top"
+                            android:visibility="gone"
+                            app:srcCompat="@drawable/icon_delete_img" />
+                </FrameLayout>
+
+                <ImageView
+                        android:id="@+id/iv_card_example"
+                        android:layout_width="@dimen/dimen_64dp"
+                        android:layout_height="@dimen/dimen_64dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/icon_example_idcard" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                    android:id="@+id/ll_pharmacy_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_16dp"
+                    android:layout_marginRight="@dimen/dimen_16dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="药师注册证编号（选填）:"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/font_14sp" />
+
+                <EditText
+                        android:id="@+id/et_pharmacy_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimen_4dp"
+                        android:background="@null"
+                        android:hint="请输入药师注册证编号"
+                        android:textColorHint="@color/alter_drug_color"
+                        android:textSize="@dimen/font_14sp" />
+
+            </LinearLayout>
+
+            <Button
+                    android:id="@+id/btn_with_drawal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="@dimen/dimen_16dp"
+                    android:layout_marginTop="@dimen/dimen_64dp"
+                    android:layout_marginRight="@dimen/dimen_16dp"
+                    android:background="@drawable/bg_blue_btn"
+                    android:text="下一步"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_16sp" />
+        </LinearLayout>
+
+        <include layout="@layout/layout_mask" />
+
+    </FrameLayout>
+</layout>

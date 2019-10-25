@@ -19,6 +19,8 @@ object HttpCode {
      */
     val FAIL_CODE = "4B2012"
 
+    val PWD_ERROR = ""
+
     /**
      * 网络连接失败
      */

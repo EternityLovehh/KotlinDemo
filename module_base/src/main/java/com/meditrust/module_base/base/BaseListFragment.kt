@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.meditrust.module_base.adapter.BaseItem
-import com.meditrust.module_base.adapter.BasePagedAdapter
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.meditrust.module_base.constant.EmptyStatus
 import com.meditrust.module_base.constant.RefreshResult
+import com.meditrust.module_base.model.BaseItem
 import com.meditrust.module_base.utils.ToastUtils
+import com.meditrust.module_base.view.EmptyView
 
 /**
  * @author: create by zhongchao.wang
@@ -41,7 +43,7 @@ abstract class BaseListFragment<T : BaseItem, V : ViewDataBinding, VM : BaseList
         initInject()
 
         initData()
-        return return mBinding.root
+        return mBinding.root
     }
 
     override fun onDestroyView() {
@@ -72,7 +74,25 @@ abstract class BaseListFragment<T : BaseItem, V : ViewDataBinding, VM : BaseList
 
     }
 
-    private fun loadMoreFinished(result: RefreshResult) {
+    fun refreshFinished(
+        result: RefreshResult,
+        refreshLayout: SwipeRefreshLayout?,
+        emptyView: EmptyView
+    ) {
+        refreshLayout?.isRefreshing = false
+        emptyView?.apply {
+            state = when (result) {
+                RefreshResult.SUCCEED -> EmptyStatus.DISMISS
+                RefreshResult.FAILED -> EmptyStatus.LOAD_FAILED
+                RefreshResult.NO_DATA -> EmptyStatus.NO_DATA
+                RefreshResult.NO_MORE -> {
+                    EmptyStatus.DISMISS
+                }
+            }
+        }
+    }
+
+    fun loadMoreFinished(result: RefreshResult) {
         when (result) {
             RefreshResult.SUCCEED -> {
             }
@@ -82,5 +102,4 @@ abstract class BaseListFragment<T : BaseItem, V : ViewDataBinding, VM : BaseList
         }
     }
 
-    abstract fun adapter(): BasePagedAdapter<T, V>
 }

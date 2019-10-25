@@ -1,12 +1,17 @@
 package com.meditrust.module_drug.api
 
 import com.meditrust.module_base.MyApplication
-import com.meditrust.module_base.base.BaseModel
-import com.meditrust.module_drug.model.OrderMultipleModel
+import com.meditrust.module_base.model.BaseModel
+import com.meditrust.module_base.model.ListPaged
+import com.meditrust.module_drug.model.DrugModel
 import com.meditrust.module_drug.model.PharmacyModel
+import com.meditrust.module_drug.model.RecruitModel
+import com.meditrust.module_drug.model.ResultsBean
 import io.reactivex.Observable
 import okhttp3.RequestBody
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
 
 /**
  * @author: create by zhongchao.wang
@@ -17,65 +22,12 @@ import retrofit2.http.*
 object ApiService : Service by MyApplication.instance.appComponent.retrofit().create(Service::class.java)
 
 interface Service {
-    /**
-     * 登录请求
-     *
-     * @param requestBody
-     * @return
-     */
-    @POST("api/v1/miniApp/user/login")
-    fun login(@Header("ossType") ossType: String, @Body requestBody: RequestBody): Observable<BaseModel<Any>>
 
     /**
      * 退出登录
      */
     @GET("api/v1/miniApp/user/logout")
     fun loginOut(): Observable<BaseModel<Void>>
-
-    /**
-     * 判断是否已经注册
-     *
-     * @param phoneNum
-     * @return
-     */
-    @GET("api/v1/user/phoneNo/isRegistered")
-    fun isResgistered(@Query("phoneNo") phoneNum: String): Observable<BaseModel<Any>>
-
-    /**
-     * 获取手机登录短信验证码
-     *
-     * @param requestBody
-     * @return
-     */
-    @POST("api/v1/app/user/register/sms")
-    fun getSmsCode(@Body requestBody: RequestBody): Observable<BaseModel<Any>>
-
-    /**
-     * 找回密码
-     *
-     * @param requestBody
-     * @return
-     */
-    @POST("api/v1/user/loginPassword/find")
-    fun retrievePwd(@Body requestBody: RequestBody): Observable<BaseModel<Void>>
-
-    /**
-     * 设置密码
-     *
-     * @param requestBody
-     * @return
-     */
-    @POST("api/v1/app/user/register/loginPassword/set")
-    fun savePwd(@Body requestBody: RequestBody): Observable<BaseModel<Void>>
-
-    /**
-     * 设置昵称
-     *
-     * @param requestBody
-     * @return
-     */
-    @POST("api/v1/user/update/info")
-    fun saveNickname(@Body requestBody: RequestBody): Observable<BaseModel<Void>>
 
     /**
      * 获取药师信息
@@ -167,12 +119,12 @@ interface Service {
 //     */
 //    @GET("api/v1/user/bindingPharmacy/audit/unpass")
 //    fun unAuditPass(@Query("userId") userId: String): Observable<BaseModel<Void>>
-//
-//    /**
-//     * 查询招募活动
-//     */
-//    @POST("api/v1/recruitPoint/query")
-//    fun queryRecruit(@Body requestBody: RequestBody): Observable<BaseListModel<RecruitModel>>
+
+    /**
+     * 查询招募活动
+     */
+    @POST("api/v1/recruitPoint/query")
+    fun queryRecruit(@Body requestBody: RequestBody): Observable<BaseModel<List<RecruitModel>>>
 //
 //    /**
 //     * 提现资格查询
@@ -203,12 +155,12 @@ interface Service {
 //     */
 //    @GET("api/v1/oss/china")
 //    fun queryArea(): Observable<BaseListModel<ProvinceModel>>
-//
-//    /**
-//     * 药品查询
-//     */
-//    @POST("api/v1/maindata/pharmacist/select/drug")
-//    fun queryDrugList(@Body requestBody: RequestBody): Observable<BaseModel<DrugModel>>
+
+    /**
+     * 药品查询
+     */
+    @POST("api/v1/maindata/pharmacist/select/drug")
+    fun queryDrugList(@Body requestBody: RequestBody): Observable<BaseModel<ListPaged<DrugModel>>>
 //
 //    /**
 //     * 修改价格和库存
@@ -240,7 +192,7 @@ interface Service {
      * 订单查询
      */
     @POST("api/v1/order/query")
-    fun queryAllOrder(@Body requestBody: RequestBody): Observable<BaseModel<OrderMultipleModel>>
+    fun queryAllOrder(@Body requestBody: RequestBody): Observable<BaseModel<ListPaged<ResultsBean>>>
 //
 //    /**
 //     * 订单详情查询
@@ -253,18 +205,18 @@ interface Service {
 //     */
 //    @POST("api/v1/order/refuse")
 //    fun refuseOrder(@Body requestBody: RequestBody): Observable<BaseModel<Void>>
-//
-//    /**
-//     * 订单确认
-//     */
-//    @POST("api/v1/order/comfirm")
-//    fun confirmOrder(@Body requestBody: RequestBody): Observable<BaseModel<Void>>
-//
-//    /**
-//     * 订单完成
-//     */
-//    @POST("api/v1/order/complete")
-//    fun successOrder(@Body requestBody: RequestBody): Observable<BaseModel<Void>>
+
+    /**
+     * 订单确认
+     */
+    @POST("api/v1/order/comfirm")
+    fun auditOrder(@Body requestBody: RequestBody): Observable<BaseModel<Any>>
+
+    /**
+     * 订单完成
+     */
+    @POST("api/v1/order/complete")
+    fun successOrder(@Body requestBody: RequestBody): Observable<BaseModel<Any>>
 //
 //    /**
 //     * 去发货

@@ -12,25 +12,12 @@ import kotlinx.android.synthetic.main.layout_empty_view.view.*
 import kotlin.properties.Delegates
 
 /**
- * @author: create by zhongchao.wang
- * @date: 2019/10/12
- * @desc: 空页面
+ * @author Yang Shihao
+ * @date 2018/11/24
  */
 class EmptyView : FrameLayout {
 
     private var contentView: View? = null
-
-    constructor(context: Context) : super(context) {
-        init()
-    }
-
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        init()
-    }
-
-    fun init() {
-        View.inflate(context, R.layout.layout_empty_view, this)
-    }
 
     var state: EmptyStatus by Delegates.observable(EmptyStatus.DISMISS) { _, old, new ->
         if (old != new) {
@@ -74,16 +61,27 @@ class EmptyView : FrameLayout {
         }
     }
 
+    constructor(context: Context) : super(context) {
+        init()
+    }
+
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+        init()
+    }
+
+    private fun init() {
+        View.inflate(context, R.layout.layout_empty_view, this)
+    }
+
     override fun onFinishInflate() {
         super.onFinishInflate()
-
-        require(childCount > 5) { "EmptyView can only have one child view" }
-
+        if (childCount > 5) {
+            throw IllegalStateException("EmptyView can only have one child view")
+        }
         if (childCount == 5) {
             contentView = getChildAt(4)
         }
         state = EmptyStatus.LOADING
     }
-
 
 }

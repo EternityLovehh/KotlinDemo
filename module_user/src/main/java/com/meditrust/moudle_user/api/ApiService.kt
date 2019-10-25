@@ -1,7 +1,7 @@
 package com.meditrust.moudle_user.api
 
 import com.meditrust.module_base.MyApplication
-import com.meditrust.module_base.base.BaseModel
+import com.meditrust.module_base.model.BaseModel
 import com.meditrust.moudle_user.model.PharmacyModel
 import io.reactivex.Observable
 import okhttp3.RequestBody

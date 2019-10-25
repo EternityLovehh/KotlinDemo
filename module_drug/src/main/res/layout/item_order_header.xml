@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+                name="bean"
+                type="com.meditrust.module_drug.model.ResultsBean" />
+
+        <variable
+                name="viewmodel"
+                type="com.meditrust.module_drug.order.OrderViewModel" />
+
+        <import type="com.meditrust.module_drug.utils.StringUtils" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_16dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_marginRight="@dimen/dimen_16dp"
+            android:orientation="vertical">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/tv_order_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="@{bean.createTime}"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/font_14sp" />
+
+            <TextView
+                    android:id="@+id/tv_order_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_12dp"
+                    android:layout_toRightOf="@id/tv_order_time"
+                    android:background="@drawable/bg_small_blue_corner"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dimen_4dp"
+                    android:paddingRight="@dimen/dimen_4dp"
+                    android:text="@{viewmodel.remarkLiveData}"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_10sp"
+                    android:visibility="@{viewmodel.remarkVisible? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                    android:id="@+id/tv_order_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:text="@{StringUtils.orderType(bean.status)}"
+                    android:textColor="@color/bottom_tab_text_color"
+                    android:textSize="@dimen/font_14sp" />
+
+        </RelativeLayout>
+
+
+        <TextView
+                android:id="@+id/tv_order_invoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_order_type"
+                android:layout_alignTop="@+id/tv_order_type"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/dimen_4dp"
+                android:text="@{StringUtils.invoiceType(bean.remark3)}"
+                android:textColor="@color/invoice_color"
+                android:textSize="@dimen/font_12sp" />
+
+    </LinearLayout>
+</layout>

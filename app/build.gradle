@@ -45,9 +45,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(':module_base')
+    kapt 'com.google.dagger:dagger-compiler:+'
+    kapt 'com.google.dagger:dagger-android-processor:+'
 
     kapt 'com.alibaba:arouter-compiler:+'
-    kapt 'com.google.dagger:dagger-compiler:+'
     kapt 'android.arch.persistence.room:compiler:+'
 
 

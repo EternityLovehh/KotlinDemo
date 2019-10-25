@@ -7,12 +7,12 @@ import androidx.fragment.app.FragmentManager
 import com.meditrust.module_base.MyApplication
 import com.meditrust.module_base.R
 import com.meditrust.module_base.Router
-import com.meditrust.module_base.base.BaseModel
 import com.meditrust.module_base.constant.HttpCode
 import com.meditrust.module_base.dialog.BindViewHolder
 import com.meditrust.module_base.dialog.CommonDialog
 import com.meditrust.module_base.listener.OnDialogViewClickListener
 import com.meditrust.module_base.manager.ActivityManager
+import com.meditrust.module_base.model.BaseModel
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -31,7 +31,7 @@ fun <T> Observable<T>.io_main(): Observable<T> {
 
 fun <D, T : BaseModel<D>> Observable<T>.subscribeBy(onResponse: (D?) -> Unit, onFailure: (String) -> Unit): Disposable =
     subscribe({
-        Log.e("respose", it.toString())
+        Log.e("respose", it.result.toString())
         when (it.code) {
             HttpCode.SUCCESS_CODE -> onResponse(it.result)
             HttpCode.FAIL_TOKEN -> {
@@ -41,10 +41,13 @@ fun <D, T : BaseModel<D>> Observable<T>.subscribeBy(onResponse: (D?) -> Unit, on
             HttpCode.FAIL_CODE -> {
                 onFailure(it.message)
             }
+            else -> {
+                onFailure(it.message)
+            }
         }
     }, {
         onFailure(it.message!!)
-        Log.e("respose", it.message)
+        Log.e("respose", it?.message)
     })
 
 fun showLoginDialog() {

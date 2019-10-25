@@ -6,16 +6,20 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.meditrust.module_base.R
-import com.meditrust.module_base.adapter.BaseItem
-import com.meditrust.module_base.adapter.BasePagedAdapter
+import com.meditrust.module_base.constant.EmptyStatus
 import com.meditrust.module_base.constant.RefreshResult
 import com.meditrust.module_base.listener.OnClickListener
 import com.meditrust.module_base.manager.ActivityManager
+import com.meditrust.module_base.model.BaseItem
 import com.meditrust.module_base.utils.ToastUtils
+import com.meditrust.module_base.view.EmptyView
 
 /**
  * @author: create by zhongchao.wang
@@ -44,6 +48,7 @@ abstract class BaseListActivity<T : BaseItem, V : ViewDataBinding, VM : BaseList
         initJect()
         initData()
         ActivityManager.instance?.addActivity(this)
+
     }
 
     private fun setLightStatusBar(statusBar: Boolean?) {
@@ -132,7 +137,33 @@ abstract class BaseListActivity<T : BaseItem, V : ViewDataBinding, VM : BaseList
 
     }
 
-    private fun loadMoreFinished(result: RefreshResult) {
+    fun setToolBar(toolbar: Toolbar, tvTitle: TextView, title: String) {
+        setSupportActionBar(toolbar)
+        tvTitle.text = title
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        toolbar.setNavigationOnClickListener { finish() }
+        toolbar.navigationIcon = getDrawable(R.drawable.icon_black_back)
+    }
+
+    fun refreshFinished(
+        result: RefreshResult,
+        refreshLayout: SwipeRefreshLayout,
+        emptyView: EmptyView
+    ) {
+        refreshLayout?.isRefreshing = false
+        emptyView?.apply {
+            state = when (result) {
+                RefreshResult.SUCCEED -> EmptyStatus.DISMISS
+                RefreshResult.FAILED -> EmptyStatus.LOAD_FAILED
+                RefreshResult.NO_DATA -> EmptyStatus.NO_DATA
+                RefreshResult.NO_MORE -> {
+                    EmptyStatus.DISMISS
+                }
+            }
+        }
+    }
+
+    fun loadMoreFinished(result: RefreshResult) {
         when (result) {
             RefreshResult.SUCCEED -> {
             }
@@ -141,7 +172,5 @@ abstract class BaseListActivity<T : BaseItem, V : ViewDataBinding, VM : BaseList
             RefreshResult.NO_MORE -> ToastUtils.showToast("全部加载完成")
         }
     }
-
-    abstract fun adapter(): BasePagedAdapter<T, V>
 
 }

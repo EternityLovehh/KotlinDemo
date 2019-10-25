@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+                name="viewmodel"
+                type="com.meditrust.module_drug.order.OrderViewModel" />
+    </data>
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/rg_drug"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_16dp"
+            android:layout_marginTop="@dimen/dimen_12dp"
+            android:layout_marginRight="@dimen/dimen_16dp"
+            android:layout_marginBottom="@dimen/dimen_12dp"
+            android:orientation="horizontal">
+
+        <RadioButton
+                android:id="@+id/rb_hot_drug"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_drug_left_tab"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="@dimen/dimen_4dp"
+                android:text="@{viewmodel.mTabSendDrug, default=@string/hot_drug}"
+                android:textColor="@color/selector_drug_tab_color"
+                android:textSize="@dimen/font_14sp" />
+
+        <RadioButton
+                android:id="@+id/rb_all_drug"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_drug_right_tab"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="@dimen/dimen_4dp"
+                android:text="@{viewmodel.mTabComeStore, default=@string/all_drug}"
+                android:textColor="@color/selector_drug_tab_color"
+                android:textSize="@dimen/font_14sp" />
+
+    </RadioGroup>
+</layout>

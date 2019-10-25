@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-        <variable name="viewmodel" type="com.meditrust.module_drug.viewmodel.WelfareViewModel"/>
+
+        <variable
+                name="viewmodel"
+                type="com.meditrust.module_drug.welfare.WelfareViewModel" />
     </data>
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent">
-        <TextView android:layout_width="match_parent" android:layout_height="match_parent"/>
-    </LinearLayout>
+    <com.meditrust.module_base.view.EmptyView
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rl_welfare"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+    </com.meditrust.module_base.view.EmptyView>
 </layout>

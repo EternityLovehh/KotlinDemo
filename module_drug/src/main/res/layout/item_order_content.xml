@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+                name="bean"
+                type="com.meditrust.module_drug.model.HomedeliveryOrderDetailRespBean" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ll_order_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_16dp"
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_marginRight="@dimen/dimen_16dp"
+            android:clickable="true"
+            android:orientation="vertical">
+
+        <ImageView
+                android:id="@+id/iv_order_avtor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                app:imageUrl="@{bean.drugImageUrl}" />
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_8dp"
+                android:layout_toRightOf="@+id/iv_order_avtor"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/tv_order_drug_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_4dp"
+                    android:text="@{bean.drugName}"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/font_12sp" />
+
+            <TextView
+                    android:id="@+id/tv_order_drug_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_4dp"
+                    android:text="@{@string/drug_price + bean.commodityPrice}"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/font_12sp" />
+
+        </LinearLayout>
+
+        <TextView
+                android:id="@+id/tv_order_drug_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@{@string/drug_num + bean.quantity}"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/font_12sp" />
+
+    </RelativeLayout>
+</layout>

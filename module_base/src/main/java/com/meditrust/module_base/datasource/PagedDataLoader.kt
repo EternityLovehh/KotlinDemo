@@ -2,11 +2,6 @@ package com.meditrust.module_base.datasource
 
 import androidx.paging.PageKeyedDataSource
 
-/**
- * @author: create by zhongchao.wang
- * @date: 2019/10/11
- * @desc:
- */
 interface PagedDataLoader<T> {
 
     fun loadInitial(
@@ -19,5 +14,4 @@ interface PagedDataLoader<T> {
     fun refresh()
 
     fun loadMore()
-
 }

@@ -9,15 +9,16 @@ import androidx.recyclerview.widget.RecyclerView
  * @date: 2019/9/18
  * @desc: databinding viewholder
  */
-class BindingHolder<T : ViewDataBinding> : RecyclerView.ViewHolder {
+class BindingHolder : RecyclerView.ViewHolder {
 
-    protected var mBinding: T
+    protected var mBinding: ViewDataBinding
 
-    constructor(binding: T) : super(binding.root) {
+    constructor(binding: ViewDataBinding) : super(binding.root) {
         this.mBinding = binding
     }
 
-    fun getBinding(): T {
+    fun getBinding(): ViewDataBinding {
         return mBinding
     }
+
 }

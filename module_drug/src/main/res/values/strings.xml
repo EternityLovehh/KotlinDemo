@@ -2,4 +2,14 @@
     <string name="app_name">module_drug</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+
+
+    <string name="drug_name">药品名:</string>
+    <string name="drug_commonname">通用名:</string>
+    <string name="drug_spec">规格:</string>
+    <string name="drug_manu">厂家:</string>
+    <string name="drug_price">￥</string>
+    <string name="total_price">总价: ￥</string>
+    <string name="drug_stockqty">库存:</string>
+    <string name="drug_num">x</string>
 </resources>

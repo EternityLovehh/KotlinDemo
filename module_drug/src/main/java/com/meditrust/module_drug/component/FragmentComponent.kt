@@ -5,6 +5,7 @@ import com.meditrust.module_base.scope.FragmentScope
 import com.meditrust.module_drug.order.fragment.*
 import com.meditrust.module_drug.pharmacy.MyPharmacyFragment
 import com.meditrust.module_drug.welfare.WelfareFragment
+import com.meditrust.module_drug.workroom.recruit.RecruitFragment
 import dagger.Component
 
 
@@ -29,4 +30,6 @@ interface FragmentComponent {
     fun inject(completedOrderFragment: CompletedOrderFragment)
 
     fun inject(welfareFragment: WelfareFragment)
+
+    fun inject(recruitFragment: RecruitFragment)
 }

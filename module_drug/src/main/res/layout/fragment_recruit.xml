@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.meditrust.module_base.constant.Const" />
+
+        <variable
+                name="viewmodel"
+                type="com.meditrust.module_drug.welfare.WelfareViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_16dp"
+                android:layout_marginTop="@dimen/dimen_16dp"
+                android:layout_marginRight="@dimen/dimen_16dp"
+                android:layout_marginBottom="@dimen/dimen_16dp"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:id="@+id/tv_drug_recruit"
+                    android:layout_width="@dimen/dimen_80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:background="@{viewmodel.mDrugSelected ?@drawable/bg_blue_solid_btn: @drawable/bg_corner_recruit}"
+                    android:enabled="true"
+                    android:gravity="center"
+                    android:onClick="@{(view)->viewmodel.changeRecruit(view, @string/drug_recruit)}"
+                    android:padding="@dimen/dimen_8dp"
+                    android:text="药品招募"
+                    android:textColor="@{viewmodel.mDrugSelected?@android:color/white:@color/dark_gray}"
+                    android:textSize="@dimen/font_12sp" />
+
+            <TextView
+                    android:id="@+id/tv_insuran_recruit"
+                    android:layout_width="@dimen/dimen_80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@{viewmodel.mInsuranSelected ?@drawable/bg_blue_solid_btn: @drawable/bg_corner_recruit}"
+                    android:gravity="center"
+                    android:onClick="@{(view)->viewmodel.changeRecruit(view, @string/insuran_recruit)}"
+                    android:padding="@dimen/dimen_8dp"
+                    android:text="保险招募"
+                    android:textColor="@{viewmodel.mInsuranSelected?@android:color/white:@color/dark_gray}"
+                    android:textSize="@dimen/font_12sp" />
+
+            <TextView
+                    android:id="@+id/tv_stamps_recruit"
+                    android:layout_width="@dimen/dimen_80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:background="@{viewmodel.mStampSelected ?@drawable/bg_blue_solid_btn: @drawable/bg_corner_recruit}"
+                    android:gravity="center"
+                    android:onClick="@{(view)->viewmodel.changeRecruit(view, @string/stamp_recruit)}"
+                    android:padding="@dimen/dimen_8dp"
+                    android:text="问券招募"
+                    android:textColor="@{viewmodel.mStampSelected?@android:color/white:@color/dark_gray}"
+                    android:textSize="@dimen/font_12sp" />
+
+        </FrameLayout>
+
+        <include layout="@layout/divider_item" />
+
+        <com.meditrust.module_base.view.EmptyView
+                android:id="@+id/empty_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rl_recruit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+        </com.meditrust.module_base.view.EmptyView>
+    </LinearLayout>
+</layout>

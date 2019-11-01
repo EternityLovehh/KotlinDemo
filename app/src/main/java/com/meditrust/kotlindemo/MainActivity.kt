@@ -8,10 +8,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.meditrust.kotlindemo.databinding.ActivityMainBinding
 import com.meditrust.module_base.adapter.CommonPageAdapter
 import com.meditrust.module_base.base.BaseActivity
+import com.meditrust.module_drug.integtal.IntegralFragment
+import com.meditrust.module_drug.person.PersonFragment
 import com.meditrust.module_drug.welfare.WelfareFragment
 import com.meditrust.module_drug.workroom.WorkRoomFragment
-import com.meditrust.moudle_user.fragment.PersonFragment
-import com.meditrust.moudle_user.fragment.WithDrawalFragment
 
 
 @Route(path = "/app/MainActivity")
@@ -36,7 +36,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         setSupportActionBar(mToolbar)
         mTitle?.text = "首页"
         mBinding.navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-        mFragmentList = listOf(WorkRoomFragment(), WelfareFragment(), WithDrawalFragment(), PersonFragment())
+        mFragmentList =
+            listOf(WorkRoomFragment(), WelfareFragment(), IntegralFragment(), PersonFragment())
         mAdapter = CommonPageAdapter(this.supportFragmentManager, mFragmentList, null)
         mBinding.vpMain?.apply {
             this.adapter = mAdapter

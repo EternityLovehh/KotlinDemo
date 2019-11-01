@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+                name="viewmodel"
+                type="com.meditrust.module_drug.pharmacy.MyPharmacyViewModel" />
+
+        <variable
+                name="pharmacy"
+                type="com.meditrust.module_drug.model.PharmacyModel" />
+
+        <variable
+                name="integtal"
+                type="com.meditrust.module_drug.model.IntegtalModel" />
+
+        <variable
+                name="pharmacydetail"
+                type="com.meditrust.module_drug.model.PharmacyDetailModel" />
+
+    </data>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/bg_my_gradient_blue"
+                android:paddingLeft="@dimen/dimen_16dp">
+
+            <ImageView
+                    android:id="@+id/iv_portrait"
+                    android:layout_width="@dimen/dimen_64dp"
+                    android:layout_height="@dimen/dimen_64dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_avotor" />
+
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_72dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_16dp"
+                    android:layout_marginRight="@dimen/dimen_16dp"
+                    android:layout_toRightOf="@+id/iv_portrait"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:id="@+id/tv_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@{pharmacy.userName??pharmacy.nickName}"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/font_18sp" />
+
+                <TextView
+                        android:id="@+id/tv_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:drawableRight="@drawable/icon_white_next"
+                        android:drawablePadding="@dimen/dimen_8dp"
+                        android:onClick="@{(view)->viewmodel.startAnyPages(view, 1)}"
+                        android:paddingTop="@dimen/dimen_8dp"
+                        android:paddingBottom="@dimen/dimen_4dp"
+                        android:text="@{pharmacydetail.pharmacyAddress, default=@string/please_bind_pharmacy}"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/font_14sp" />
+
+            </LinearLayout>
+
+            <ImageView
+                    android:id="@+id/iv_pharmacy_qrcode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/dimen_24dp"
+                    android:layout_marginRight="@dimen/dimen_16dp"
+                    app:srcCompat="@drawable/icon_qrcode_white" />
+        </RelativeLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_80dp"
+                android:background="@color/start_blue_color">
+
+            <LinearLayout
+                    android:id="@+id/ll_integral_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:onClick="@{viewmodel::startIntegtal}"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="@dimen/dimen_8dp"
+                        android:text="@string/my_integral_num"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/font_14sp" />
+
+                <TextView
+                        android:id="@+id/tv_integral_num"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(integtal.current)}"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/font_20sp" />
+            </LinearLayout>
+
+            <View
+                    android:layout_width="@dimen/line_height"
+                    android:layout_height="@dimen/dimen_32dp"
+                    android:layout_gravity="center"
+                    android:background="@android:color/white" />
+
+            <LinearLayout
+                    android:id="@+id/ll_integral_rank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:onClick="@{viewmodel::startIntegtalRank}"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="@dimen/dimen_8dp"
+                        android:text="@string/integral_rank"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/font_14sp" />
+
+                <TextView
+                        android:id="@+id/tv_integral_rank"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(integtal.rank), default = @string/not_rank}"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/font_20sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+                android:id="@+id/rl_order_reconce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:onClick="@{viewmodel::startOrderReceipt}"
+                android:padding="@dimen/dimen_16dp"
+                android:visibility="@{pharmacy.isManager == @string/is_manager?View.VISIBLE:View.GONE}">
+
+            <ImageView
+                    android:id="@+id/iv_order_reconce"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/icon_order_recipt" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_12dp"
+                    android:layout_toRightOf="@+id/iv_order_reconce"
+                    android:text="@string/order_reconce"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/font_14sp" />
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/icon_gray_next" />
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/rl_pharmacy_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_1dp"
+                android:background="@android:color/white"
+                android:onClick="@{(view)->viewmodel.startAnyPages(view, 2)}"
+                android:padding="@dimen/dimen_16dp">
+
+            <ImageView
+                    android:id="@+id/iv_pharmacy_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/icon_members" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_12dp"
+                    android:layout_toRightOf="@+id/iv_pharmacy_user"
+                    android:text="@string/pharmacy_user"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/font_14sp" />
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/icon_gray_next" />
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/rl_my_welfare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_1dp"
+                android:background="@android:color/white"
+                android:onClick="@{(view)->viewmodel.startAnyPages(view, 3)}"
+                android:padding="@dimen/dimen_16dp">
+
+            <ImageView
+                    android:id="@+id/iv_my_welfare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/icon_my_welfare" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_12dp"
+                    android:layout_toRightOf="@+id/iv_my_welfare"
+                    android:text="@string/my_welfare"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/font_14sp" />
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/icon_gray_next" />
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/rl_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:background="@android:color/white"
+                android:onClick="@{viewmodel::startSetting}"
+                android:padding="@dimen/dimen_16dp">
+
+            <ImageView
+                    android:id="@+id/iv_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/icon_setting" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dimen_12dp"
+                    android:layout_toRightOf="@+id/iv_setting"
+                    android:text="@string/my_setting"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/font_14sp" />
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/icon_gray_next" />
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

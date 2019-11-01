@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+                name="viewmodel"
+                type="com.meditrust.module_drug.pharmacy.MyPharmacyViewModel" />
+
+        <variable
+                name="bean"
+                type="com.meditrust.module_drug.model.IntegtalModel" />
+    </data>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/bg_gradient_blue"
+                android:orientation="vertical">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dimen_16dp"
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:layout_marginRight="@dimen/dimen_16dp"
+                    android:background="@drawable/bg_top_corner_white">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/tv_residue_integral"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dimen_16dp"
+                            android:drawableLeft="@drawable/icon_integral"
+                            android:drawablePadding="@dimen/dimen_8dp"
+                            android:gravity="center"
+                            android:text="积分"
+                            android:textSize="@dimen/font_14sp" />
+
+                    <TextView
+                            android:id="@+id/tv_residue_integral"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dimen_8dp"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/bottom_tab_text_color"
+                            android:textSize="28sp" />
+                </LinearLayout>
+
+                <TextView
+                        android:id="@+id/tv_integral_rules"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="@dimen/dimen_32dp"
+                        android:background="@drawable/bg_intergral_left_corner"
+                        android:paddingLeft="@dimen/dimen_12dp"
+                        android:paddingTop="@dimen/dimen_2dp"
+                        android:paddingRight="@dimen/dimen_8dp"
+                        android:paddingBottom="@dimen/dimen_2dp"
+                        android:text="积分规则"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/font_14sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <include layout="@layout/divider_line" />
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:padding="@dimen/dimen_20dp">
+
+            <LinearLayout
+                    android:id="@+id/ll_with_drawal_tutorial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/icon_wd_tutorial" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimen_8dp"
+                        android:gravity="center"
+                        android:text="@string/with_drawal_tutorial" />
+            </LinearLayout>
+
+            <View
+                    android:layout_width="@dimen/dimen_1dp"
+                    android:layout_height="@dimen/dimen_16dp"
+                    android:background="@color/transpant_white_color" />
+
+
+            <LinearLayout
+                    android:id="@+id/ll_integral_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/icon_integral_history" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dimen_8dp"
+                        android:gravity="center"
+                        android:text="@string/integral_record" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+            <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_corner_recruit"
+                    android:orientation="vertical"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="16dp">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_16dp"
+                        android:paddingLeft="@dimen/dimen_16dp"
+                        android:paddingRight="@dimen/dimen_16dp"
+                        android:text="@string/with_drawal_explain"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/font_16sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rl_with_drawal_rule"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <TextView
+                        android:id="@+id/tv_more_rules"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_12dp"
+                        android:paddingLeft="@dimen/dimen_16dp"
+                        android:paddingRight="@dimen/dimen_16dp"
+                        android:paddingBottom="@dimen/dimen_12dp"
+                        android:text="5.查看更多"
+                        android:textColor="@color/bottom_tab_text_color"
+                        android:textSize="@dimen/font_14sp" />
+
+            </LinearLayout>
+
+            <Button
+                    android:id="@+id/btn_with_drawal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="@dimen/dimen_16dp"
+                    android:layout_marginRight="@dimen/dimen_16dp"
+                    android:background="@drawable/bg_blue_btn"
+                    android:clickable="true"
+                    android:text="@string/imm_with_drawal"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                    app:layout_constraintVertical_bias="0.838"
+                    tools:layout_editor_absoluteX="0dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>

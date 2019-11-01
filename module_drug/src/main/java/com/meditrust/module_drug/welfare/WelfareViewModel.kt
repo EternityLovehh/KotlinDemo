@@ -1,11 +1,14 @@
 package com.meditrust.module_drug.welfare
 
 import android.app.Application
+import android.view.View
+import androidx.lifecycle.MutableLiveData
 import com.meditrust.module_base.base.BaseListViewModel
 import com.meditrust.module_base.constant.Const
 import com.meditrust.module_base.extensions.io_main
 import com.meditrust.module_base.extensions.subscribeBy
 import com.meditrust.module_base.utils.ToastUtils
+import com.meditrust.module_drug.R
 import com.meditrust.module_drug.api.ApiService
 import com.meditrust.module_drug.model.RecruitModel
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -20,6 +23,15 @@ import org.json.JSONObject
  */
 class WelfareViewModel(application: Application) : BaseListViewModel<RecruitModel>(application) {
 
+    var mRecruitType: MutableLiveData<String>? = MutableLiveData()
+    val mDrugSelected: MutableLiveData<Boolean> = MutableLiveData()
+    val mInsuranSelected: MutableLiveData<Boolean> = MutableLiveData()
+    val mStampSelected: MutableLiveData<Boolean> = MutableLiveData()
+
+    init {
+        mDrugSelected.value = true
+    }
+
     override fun pageSize(): Int {
         return Int.MAX_VALUE
     }
@@ -27,7 +39,7 @@ class WelfareViewModel(application: Application) : BaseListViewModel<RecruitMode
     override fun loadData(page: Int, onResponse: (ArrayList<RecruitModel>?) -> Unit) {
         val jsonObject = JSONObject()
         try {
-            jsonObject.put("type", null)
+            jsonObject.put("type", mRecruitType?.value)
         } catch (e: JSONException) {
             e.printStackTrace()
         }
@@ -42,5 +54,31 @@ class WelfareViewModel(application: Application) : BaseListViewModel<RecruitMode
             })
             .add()
     }
+
+    fun changeRecruit(view: View, type: String) {
+        when (view.id) {
+            R.id.tv_drug_recruit -> {
+                mDrugSelected.value = true
+                mInsuranSelected.value = false
+                mStampSelected.value = false
+                mRecruitType?.value = Const.DRUG_RECRUIT
+            }
+            R.id.tv_insuran_recruit -> {
+                mDrugSelected.value = false
+                mInsuranSelected.value = true
+                mStampSelected.value = false
+                mRecruitType?.value = Const.INSURAN_RECRUIT
+            }
+
+            R.id.tv_stamps_recruit -> {
+                mDrugSelected.value = false
+                mInsuranSelected.value = false
+                mStampSelected.value = true
+                mRecruitType?.value = Const.STAMP_RECRYUT
+            }
+        }
+        invalidate()
+    }
+
 
 }

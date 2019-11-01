@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_dialog_shape"
+        android:orientation="vertical">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dimen_8dp"
+            android:text="不可提现"
+            android:textColor="@color/dark_gray"
+            android:textSize="@dimen/font_16sp" />
+
+    <TextView
+            android:id="@+id/tv_with_drawal_reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@color/middle_gray"
+            android:textSize="@dimen/font_14sp" />
+
+    <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_margin="@dimen/dimen_16dp"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/bottom_tab_text_color"
+            android:textSize="@dimen/font_16sp" />
+</RelativeLayout>

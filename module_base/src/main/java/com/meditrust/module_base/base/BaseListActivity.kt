@@ -2,10 +2,7 @@ package com.meditrust.module_base.base
 
 import android.os.Build
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.view.WindowManager
+import android.view.*
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -18,6 +15,7 @@ import com.meditrust.module_base.constant.RefreshResult
 import com.meditrust.module_base.listener.OnClickListener
 import com.meditrust.module_base.manager.ActivityManager
 import com.meditrust.module_base.model.BaseItem
+import com.meditrust.module_base.utils.KeyBoardUtils
 import com.meditrust.module_base.utils.ToastUtils
 import com.meditrust.module_base.view.EmptyView
 
@@ -173,4 +171,10 @@ abstract class BaseListActivity<T : BaseItem, V : ViewDataBinding, VM : BaseList
         }
     }
 
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        when (ev?.action) {
+            MotionEvent.ACTION_DOWN -> KeyBoardUtils.hideKeyBoard(ev, this?.currentFocus!!, this)
+        }
+        return super.dispatchTouchEvent(ev)
+    }
 }

@@ -2,16 +2,16 @@ package com.meditrust.module_base.base
 
 import android.os.Build
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.view.WindowManager
+import android.view.*
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.meditrust.module_base.R
 import com.meditrust.module_base.listener.OnClickListener
 import com.meditrust.module_base.manager.ActivityManager
+import com.meditrust.module_base.utils.KeyBoardUtils
 import com.meditrust.module_base.utils.ToastUtils
 
 abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity {
@@ -38,6 +38,14 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
         initJect()
         initData()
         ActivityManager.instance?.addActivity(this)
+    }
+
+    fun setToolBar(toolbar: Toolbar, tvTitle: TextView, title: String) {
+        setSupportActionBar(toolbar)
+        tvTitle.text = title
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        toolbar.setNavigationOnClickListener { finish() }
+        toolbar.navigationIcon = getDrawable(R.drawable.icon_black_back)
     }
 
     private fun setLightStatusBar(statusBar: Boolean?) {
@@ -109,6 +117,16 @@ abstract class BaseActivity<V : ViewDataBinding, VM : BaseViewModel> : AppCompat
         mViewModel!!.onDestory()
         ActivityManager.instance?.removeActivity(this)
     }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        currentFocus?.let {
+            when (ev?.action) {
+                MotionEvent.ACTION_DOWN -> KeyBoardUtils.hideKeyBoard(ev, it, this)
+            }
+        }
+        return super.dispatchTouchEvent(ev)
+    }
+
 
     abstract fun getStausBar(): Boolean?
 

@@ -50,6 +50,30 @@ fun <D, T : BaseModel<D>> Observable<T>.subscribeBy(onResponse: (D?) -> Unit, on
         Log.e("respose", it?.message)
     })
 
+fun <D, T : BaseModel<D>> Observable<T>.subscribe(
+    onResponse: (T?) -> Unit,
+    onFailure: (String) -> Unit
+): Disposable =
+    subscribe({
+        Log.e("respose", it.result.toString())
+        when (it.code) {
+            HttpCode.SUCCESS_CODE -> onResponse(it)
+            HttpCode.FAIL_TOKEN -> {
+                showLoginDialog()
+                onFailure(it.message)
+            }
+            HttpCode.FAIL_CODE -> {
+                onFailure(it.message)
+            }
+            else -> {
+                onFailure(it.message)
+            }
+        }
+    }, {
+        onFailure(it.message!!)
+        Log.e("respose", it?.message)
+    })
+
 fun showLoginDialog() {
     val fragmentManager: FragmentManager =
         (ActivityManager.instance?.currentActivity()!! as FragmentActivity).supportFragmentManager
@@ -74,5 +98,7 @@ fun showLoginDialog() {
         .create()
         .show()
 }
+
+
 
 

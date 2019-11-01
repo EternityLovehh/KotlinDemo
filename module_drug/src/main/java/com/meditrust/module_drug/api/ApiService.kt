@@ -3,15 +3,10 @@ package com.meditrust.module_drug.api
 import com.meditrust.module_base.MyApplication
 import com.meditrust.module_base.model.BaseModel
 import com.meditrust.module_base.model.ListPaged
-import com.meditrust.module_drug.model.DrugModel
-import com.meditrust.module_drug.model.PharmacyModel
-import com.meditrust.module_drug.model.RecruitModel
-import com.meditrust.module_drug.model.ResultsBean
+import com.meditrust.module_drug.model.*
 import io.reactivex.Observable
 import okhttp3.RequestBody
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 /**
  * @author: create by zhongchao.wang
@@ -55,15 +50,14 @@ interface Service {
     /**
      * 获取协议
      */
-//    @GET("api/v1/data/{dictCode}")
-//    fun getProtocol(@Path("dictCode") dictCode: String): Observable<BaseListModel<ProtocolModel>>
-//
-//    /**
-//     * 药师积分账户 查询
-//     */
-//    @GET("api/v1/integral/account")
-//    fun queryIntegral(): Observable<BaseModel<IntegtalModel>>
-//
+    @GET("api/v1/data/{dictCode}")
+    fun getProtocol(@Path("dictCode") dictCode: String): Observable<BaseModel<List<ProtocolModel>>>
+
+    /**
+     * 药师积分账户 查询
+     */
+    @GET("api/v1/integral/account")
+    fun queryIntegral(): Observable<BaseModel<IntegtalModel>>
 //    /**
 //     * 省市区查询药房
 //     */
@@ -87,18 +81,18 @@ interface Service {
 //     */
 //    @GET("api/v1/pharmacy/hasManager")
 //    fun hasManager(@Query("pharmacyId") pharmacyId: Long): Observable<BooleanModel>
-//
-//    /**
-//     * 根据药店id查询已上架的实体药店信息
-//     */
-//    @GET("api/v1/maindata/drug/pharmacy/queryPharmacyById")
-//    fun queryPharmacyForId(@Query("id") id: Long): Observable<BaseModel<PharmacyDetailModel>>
-//
-//    /**
-//     * 微信绑定信息查询
-//     */
-//    @GET("api/v1/integral/withdraw/wechat/info")
-//    fun queryWechatInfo(): Observable<BaseModel<WeChatInfoModel>>
+
+    /**
+     * 根据药店id查询已上架的实体药店信息
+     */
+    @GET("api/v1/maindata/drug/pharmacy/queryPharmacyById")
+    fun queryPharmacyForId(@Query("id") id: Long): Observable<BaseModel<PharmacyDetailModel>>
+
+    /**
+     * 微信绑定信息查询
+     */
+    @GET("api/v1/integral/withdraw/wechat/info")
+    fun queryWechatInfo(): Observable<BaseModel<WeChatInfoModel>>
 //
 //    /**
 //     * 查询药店成员信息
@@ -125,13 +119,13 @@ interface Service {
      */
     @POST("api/v1/recruitPoint/query")
     fun queryRecruit(@Body requestBody: RequestBody): Observable<BaseModel<List<RecruitModel>>>
-//
-//    /**
-//     * 提现资格查询
-//     */
-//    @GET("api/v1/integral/withdraw/able")
-//    fun queryQulife(): Observable<BaseModel<WithDrawalModel>>
-//
+
+    /**
+     * 提现资格查询
+     */
+    @GET("api/v1/integral/withdraw/able")
+    fun queryQulife(): Observable<BaseModel<WithDrawalModel>>
+
 //    /**
 //     * 药师积分提现
 //     */
@@ -241,19 +235,19 @@ interface Service {
 //     */
 //    @GET("api/v1/bizTrans/wxPayQrQuery")
 //    fun payResult(@Query("orderNo") orderNo: String): Observable<BooleanModel>
-//
-//    /**
-//     * 招募活动详情
-//     */
-//    @GET("api/v1/recruitPoint/query/detailes")
-//    fun queryRecruitDetail(@Query("id") id: String): Observable<BaseModel<RecruitDetailModel>>
-//
-//    /**
-//     * 增加活动点击量
-//     */
-//    @GET("api/v1/recruitPoint/add/clickTimes")
-//    fun addClickNum(@Query("id") id: String): Observable<BaseModel<Void>>
-//
+
+    /**
+     * 招募活动详情
+     */
+    @GET("api/v1/recruitPoint/query/detailes")
+    fun queryRecruitDetail(@Query("id") id: String): Observable<BaseModel<RecruitDetailModel>>
+
+    /**
+     * 增加活动点击量
+     */
+    @GET("api/v1/recruitPoint/add/clickTimes")
+    fun addClickNum(@Query("id") id: String): Observable<BaseModel<Void>>
+
 //    /**
 //     * 上传问券招募的照片
 //     */
@@ -265,25 +259,25 @@ interface Service {
 //     */
 //    @POST("api/v1/patient/info/save")
 //    fun addUser(@Body requestBody: RequestBody): Observable<BaseModel<Void>>
-//
-//    /**
-//     * 查询消息列表
-//     */
-//    @POST("api/v1/message/list")
-//    fun queryMsgList(@Body requestBody: RequestBody): Observable<BaseModel<MsgModel>>
-//
-//    /**
-//     * 查询消息发送者信息
-//     */
-//    @GET("api/v1/message/sender/info")
-//    fun queryMsgInfo(@Query("sender") sender: String): Observable<BaseModel<MsgInfoModel>>
-//
-//    /**
-//     * 更新消息已读状态
-//     */
-//    @POST("api/v1/message/update")
-//    fun updateMsg(@Body requestBody: RequestBody): Observable<BaseModel<Void>>
-//
+
+    /**
+     * 查询消息列表
+     */
+    @POST("api/v1/message/list")
+    fun queryMsgList(@Body requestBody: RequestBody): Observable<BaseModel<ListPaged<MsgModel>>>
+
+    /**
+     * 查询消息发送者信息
+     */
+    @GET("api/v1/message/sender/info")
+    fun queryMsgInfo(@Query("sender") sender: String): Observable<BaseModel<MsgInfoModel>>
+
+    /**
+     * 更新消息已读状态
+     */
+    @POST("api/v1/message/update")
+    fun updateMsg(@Body requestBody: RequestBody): Observable<BaseModel<Void>>
+
 //    /**
 //     * 合同协议签名
 //     */

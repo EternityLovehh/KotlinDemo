@@ -1,6 +1,8 @@
 package com.meditrust.module_drug.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -17,7 +19,11 @@ import javax.inject.Inject
 class WelfareAdapter @Inject constructor() :
     PagedListAdapter<RecruitModel, WelfareAdapter.ViewHolder>(WelfareDiffCallback()) {
 
+    lateinit var mContext: Context
+    var itemClickListener: ((View, RecruitModel, Int) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        mContext = parent.context
         return ViewHolder(
             ItemWelfateBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -29,11 +35,21 @@ class WelfareAdapter @Inject constructor() :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = getItem(position) ?: return
+        itemClickListener?.apply {
+            holder.itemView.setOnClickListener {
+                this(
+                    holder.itemView,
+                    getItem(position)!!,
+                    position
+                )
+            }
+        }
         holder.apply {
             bind(data)
             itemView.tag = data
         }
     }
+
 
     class ViewHolder(
         private val binding: ItemWelfateBinding

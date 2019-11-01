@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+                name="bean"
+                type="com.meditrust.module_drug.model.MsgInfoModel" />
+
+        <variable
+                name="viewmodel"
+                type="com.meditrust.module_drug.workroom.message.MessageViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <com.meditrust.module_base.view.EmptyView
+                android:id="@+id/empty_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+        </com.meditrust.module_base.view.EmptyView>
+
+        <LinearLayout
+                android:id="@+id/ll_msg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dimen_16dp"
+                android:layout_marginRight="@dimen/dimen_16dp"
+                android:clickable="true"
+                android:orientation="horizontal">
+
+            <FrameLayout
+                    android:id="@+id/frameLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                        android:layout_width="@dimen/dimen_64dp"
+                        android:layout_height="@dimen/dimen_64dp"
+                        app:srcCompat="@drawable/icon_msg" />
+
+                <TextView
+                        android:id="@+id/tv_msg_count"
+                        android:layout_width="@dimen/dimen_16dp"
+                        android:layout_height="@dimen/dimen_16dp"
+                        android:layout_gravity="top|right"
+                        android:background="@drawable/bg_circular_red"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(bean.quantity)}"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/font_12sp"
+                        android:visibility="visible" />
+            </FrameLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_8dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/frameLayout"
+                    app:layout_constraintStart_toEndOf="@+id/frameLayout"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_4dp">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="系统消息"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/font_16sp" />
+
+                    <TextView
+                            android:id="@+id/tv_msg_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/dimen_12dp"
+                            android:text="@{bean.createTime}"
+                            android:textColor="@color/light_gray"
+                            android:textSize="@dimen/font_14sp" />
+
+                </RelativeLayout>
+
+                <TextView
+                        android:id="@+id/tv_msg_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@{bean.content}"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/font_14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

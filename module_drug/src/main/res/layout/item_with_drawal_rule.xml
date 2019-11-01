@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+                name="bean"
+                type="com.meditrust.module_drug.model.ProtocolModel" />
+    </data>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/tv_with_drawal_rule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:paddingLeft="@dimen/dimen_16dp"
+            android:paddingRight="@dimen/dimen_16dp"
+            android:text="@{bean.value}"
+            android:textColor="@color/dark_gray"
+            android:textSize="@dimen/font_14sp"></TextView>
+</layout>

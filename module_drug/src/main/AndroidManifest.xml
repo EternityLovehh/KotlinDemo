@@ -9,8 +9,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".upload.UploadIdCardActivity"></activity>
-        <activity android:name=".order.OrderActivity"></activity>
+        <activity android:name=".workroom.detail.RecruitDetailActivity"></activity>
+        <activity android:name=".workroom.message.MessageListActivity" />
+        <activity android:name=".upload.UploadIdCardActivity" />
+        <activity android:name=".order.OrderActivity" />
         <activity android:name=".drug.AllDrugActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

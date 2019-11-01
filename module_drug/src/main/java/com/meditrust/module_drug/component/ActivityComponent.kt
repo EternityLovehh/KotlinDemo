@@ -3,6 +3,7 @@ package com.meditrust.module_drug.component
 import com.meditrust.module_base.component.AppComponent
 import com.meditrust.module_base.scope.ActivityScope
 import com.meditrust.module_drug.drug.AllDrugActivity
+import com.meditrust.module_drug.workroom.message.MessageListActivity
 import dagger.Component
 
 
@@ -17,5 +18,7 @@ import dagger.Component
 interface ActivityComponent {
 
     fun inject(allDrugActivity: AllDrugActivity)
+
+    fun inject(messageListActivity: MessageListActivity)
 
 }

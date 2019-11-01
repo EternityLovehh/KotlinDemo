@@ -28,4 +28,8 @@ object Router {
             e.printStackTrace()
         }
     }
+
+    fun startBindActivity() {
+        ARouter.getInstance().build("/user/NickNameActivity").navigation()
+    }
 }

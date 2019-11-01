@@ -1,5 +1,7 @@
 package com.meditrust.module_drug.model
 
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
 import java.io.Serializable
 
 /**
@@ -27,14 +29,16 @@ data class PharmacyModel(
     var birthday: String,
     var idNum: String,
     var isManager: String,
+    @Bindable
     var nickName: String,
-    var pharmacyId: Int = 0,
+    var pharmacyId: Long = 0,
     var phoneNo: String,
     var qrValue: String,
     var isSelf: Boolean = false,
     var sex: String,
     var userId: String,
+    @Bindable
     var userName: String,
     var userStatus: String,
     var remark1: String
-) : Serializable
+) : Serializable, BaseObservable()

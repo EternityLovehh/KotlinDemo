@@ -79,9 +79,6 @@
     <string name="back_main">返回首页</string>
     <string name="confirm_success">提交成功</string>
     <string name="exit_bind_pharmacy">解绑药房</string>
-    <string name="drug_recruit">药品招募</string>
-    <string name="insuran_recruit">保险招募</string>
-    <string name="stamps_recruit">问券招募</string>
     <string name="pharmacist">药师</string>
     <string name="manager">店长</string>
     <string name="manager_desc">如需修改信息或退出药房</string>
@@ -107,6 +104,7 @@
     <string name="bind_pharmacy_refused">您申请绑定药房信息已被拒绝，请联系客服</string>
     <string name="bind_pharmacy_forzen">您申请绑定药房信息已被冻结，请联系客服</string>
     <string name="refused_tips">您申请的绑定信息已被拒绝，请重新绑定</string>
+    <string name="auditing_pharmacy">正在审核...请耐心等待</string>
 
     <string name="call_server">联系客服</string>
     <string name="please_select">请选择</string>

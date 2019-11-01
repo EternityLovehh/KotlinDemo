@@ -66,4 +66,5 @@ open class BaseViewModel : AndroidViewModel, LifecycleObserver {
         this.isNoData.value = isNoData
     }
 
+
 }
